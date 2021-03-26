@@ -20,4 +20,43 @@ class LinkedListNode():
 
 def reverse(head_of_list):
     # Your code here
+    #local var - have the curr node as the head that passed
+    prev_node=None
+    curr_node=head_of_list
+    next_node=head_of_list.next
+
+    while(curr_node is not None):
+        #swap the pointers
+        next_node=curr_node.next
+
+        #reverse the "next" of the curr node
+        curr_node.next = prev_node
+
+        #move all three to next link 
+        # Update all pointers to move to next node
+        prev_node = curr_node
+        curr_node = next_node
+        # next_node = next_node.next
+    return prev_node
+
+def print_list(start_node): #
+    curr_node=start_node
+    while(curr_node is not None):
+        print(curr_node.value)
+        curr_node=curr_node.next
+
+x=LinkedListNode("x")
+y=LinkedListNode("y")
+z=LinkedListNode("z")
+
+x.next = y
+y.next = z
+
+head=x
+print_list(head) 
+
+
+head=reverse(head) 
+print("after reversing")
+print_list(head)
 
